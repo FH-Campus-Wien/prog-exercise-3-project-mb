@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class App {
     // global vars
-    //static Scanner sc;
 
     // final vars
     static final long m = (long) ((int) 2e31) + 1;
     static final int a = 1103515245;
     static final short c = 12345;
+    static final char[] filter = {'.', ',', '\'', '?', '!'};
 
     // Implement all methods as public static
 
@@ -19,8 +19,6 @@ public class App {
         // make method calls
         // print their results
         // etc.
-
-        //sc = new Scanner(System.in);
 
         // Task 1
         oneMonthCalendar(31, 3);
@@ -32,11 +30,14 @@ public class App {
         }
 
         // Task 3
-        guessingGame(randomNumberBetweenOneAndHundred());
+        //guessingGame(randomNumberBetweenOneAndHundred());
 
         // Task 4
         System.out.println(swapArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{100, 202, 30, 14, 15, 16}));
         System.out.println(swapArrays(new int[]{100, 202, 30, 14, 15, 16}, new int[]{1, 2, 3, 4, 5, 6, 7}));
+
+        // Task 5
+        System.out.println(camelCase("my name isn't Alice!"));
     }
 
     // TODO: Task 1
@@ -93,17 +94,42 @@ public class App {
     }
 
     // TODO: Task 4
-    public static boolean swapArrays(int[] arr0, int[] arr1){
+    public static boolean swapArrays(int[] arr0, int[] arr1) {
         int buffer;
 
-        if(arr0.length == arr1.length){
-            for(int i = 0; i < arr0.length; i++)
-            {
+        if (arr0.length == arr1.length) {
+            for (int i = 0; i < arr0.length; i++) {
                 buffer = arr1[i];
                 arr1[i] = arr0[i];
                 arr0[i] = buffer;
             }
             return true;
         } else return false;
+    }
+
+    // TODO: Task 5
+    public static String camelCase(String input) {
+        char[] inputArr = input.toCharArray();
+        boolean isFirstChar = true;
+        StringBuilder outputStr = new StringBuilder();
+
+        for (char c : inputArr) {
+            if (!hasSpecialChar(c)) {
+                if (c != ' ') {
+                    if (isFirstChar && c >= 97) c -= 32;
+                    else if (!isFirstChar && c <= 90) c += 32;
+
+                    outputStr.append(c);
+                    isFirstChar = false;
+                } else isFirstChar = true;
+            }
+        }
+
+        return outputStr.toString();
+    }
+
+    public static boolean hasSpecialChar(char _char) {
+        for (char c : filter) if (_char == c) return true;
+        return false;
     }
 }
