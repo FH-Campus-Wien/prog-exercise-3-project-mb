@@ -30,7 +30,7 @@ public class App {
         }
 
         // Task 3
-        //guessingGame(randomNumberBetweenOneAndHundred());
+        guessingGame(randomNumberBetweenOneAndHundred());
 
         // Task 4
         System.out.println(swapArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{100, 202, 30, 14, 15, 16}));
@@ -38,6 +38,9 @@ public class App {
 
         // Task 5
         System.out.println(camelCase("my name isn't Alice!"));
+
+        // Task 6
+        System.out.println(checkDigit(new int[]{3,9,1,5,8}));
     }
 
     // TODO: Task 1
@@ -131,5 +134,30 @@ public class App {
     public static boolean hasSpecialChar(char _char) {
         for (char c : filter) if (_char == c) return true;
         return false;
+    }
+
+    // TODO: Task 6
+    public static int checkDigit(int[] inputArr) {
+        int num;
+        int weight;
+        int sum = 0;
+        int remainder;
+        int checkDigit;
+
+        for (int i = 0; i < inputArr.length; i++) {
+            num = inputArr[i];
+            weight = i + 2;
+            sum += num * weight;
+        }
+
+        remainder = sum % 11;
+        checkDigit = 11 - remainder;
+
+        switch (checkDigit){
+            case 10: checkDigit = 0; break;
+            case 11: checkDigit = 5; break;
+        }
+
+        return checkDigit;
     }
 }
