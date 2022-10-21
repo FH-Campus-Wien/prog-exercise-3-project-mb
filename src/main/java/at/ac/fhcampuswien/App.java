@@ -1,15 +1,10 @@
 package at.ac.fhcampuswien;
 
-import java.time.DayOfWeek;
-import java.util.Date;
-import java.util.Random;
-import java.util.Scanner;
-
 public class App {
     // final vars
-    static final int m = (int) 2e31;
+    static final long m = (long) ((int) 2e31) + 1;
     static final int a = 1103515245;
-    static final int c = 12345;
+    static final short c = 12345;
 
     // Implement all methods as public static
 
@@ -21,7 +16,7 @@ public class App {
 
         oneMonthCalendar(31, 3);
 
-        long[] ranNums = lcg(12345);
+        long[] ranNums = lcg(0);
         for (long r : ranNums) {
             System.out.println(r);
         }
@@ -43,7 +38,7 @@ public class App {
     public static long[] lcg(long seed) {
         long[] ranNums = new long[10];
 
-        ranNums[0] = seed;
+        ranNums[0] = (a * seed + c) % m;
 
         for (int i = 1; i < ranNums.length; i++) {
             ranNums[i] = (a * ranNums[i - 1] + c) % m;
