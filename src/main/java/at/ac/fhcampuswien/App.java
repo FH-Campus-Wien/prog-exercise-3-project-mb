@@ -132,4 +132,29 @@ public class App {
         for (char c : filter) if (_char == c) return true;
         return false;
     }
+
+    // TODO: Task 6
+    public static int checkDigit(int[] inputArr) {
+        int num;
+        int weight;
+        int sum = 0;
+        int remainder;
+        int checkDigit;
+
+        for (int i = 0; i < inputArr.length; i++) {
+            num = inputArr[i];
+            weight = i + 2;
+            sum += num * weight;
+        }
+
+        remainder = sum % 11;
+        checkDigit = 11 - remainder;
+
+        switch (checkDigit){
+            case 10: checkDigit = 0; break;
+            case 11: checkDigit = 5; break;
+        }
+
+        return checkDigit;
+    }
 }
