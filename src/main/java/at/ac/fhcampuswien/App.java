@@ -93,7 +93,7 @@ public class App {
     }
 
     public static int randomNumberBetweenOneAndHundred() {
-        return new Random().nextInt(1, 101);
+        return new Random().nextInt(100) + 1;
     }
 
     // TODO: Task 4
