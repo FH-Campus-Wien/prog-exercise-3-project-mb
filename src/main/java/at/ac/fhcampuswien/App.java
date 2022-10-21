@@ -33,6 +33,10 @@ public class App {
 
         // Task 3
         guessingGame(randomNumberBetweenOneAndHundred());
+
+        // Task 4
+        System.out.println(swapArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{100, 202, 30, 14, 15, 16}));
+        System.out.println(swapArrays(new int[]{100, 202, 30, 14, 15, 16}, new int[]{1, 2, 3, 4, 5, 6, 7}));
     }
 
     // TODO: Task 1
@@ -86,5 +90,20 @@ public class App {
 
     public static int randomNumberBetweenOneAndHundred() {
         return new Random().nextInt(1, 101);
+    }
+
+    // TODO: Task 4
+    public static boolean swapArrays(int[] arr0, int[] arr1){
+        int buffer;
+
+        if(arr0.length == arr1.length){
+            for(int i = 0; i < arr0.length; i++)
+            {
+                buffer = arr1[i];
+                arr1[i] = arr0[i];
+                arr0[i] = buffer;
+            }
+            return true;
+        } else return false;
     }
 }
